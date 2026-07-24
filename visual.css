@@ -3,93 +3,150 @@
    ======================================== */
 
 /* ── VARIABLES ACTUALIZADAS ── */
+/* Se definen "variables CSS" (custom properties) dentro de :root para poder reutilizarlas en todo el documento */
 :root {
   --color-green:      #1a3a1a;
+  /* Verde oscuro principal, usado en fondos como navbar y footer */
   --color-green-mid:  #2d5a1b;
+  /* Verde intermedio, usado en degradados */
   --color-green-light:#4a7c28;
+  /* Verde claro, usado en degradados */
   --color-green-pale: #c8e6c8;
+  /* Verde pálido (definido pero no necesariamente usado en todas las reglas) */
   --color-yellow:     #F5C842;
+  /* Amarillo/dorado, color de acento principal */
   --color-yellow-dk:  #BA7517;
+  /* Amarillo oscuro, usado para acentos secundarios */
   --color-red:        #C0392B;
+  /* Rojo, usado en etiquetas y enlaces destacados */
   --color-red-light:  #F7C1C1;
+  /* Rojo claro (tono suave) */
   --color-white:      #ffffff;
+  /* Blanco puro */
   --color-bg:         #f4f6f2;
+  /* Color de fondo gris claro para secciones alternas */
   --color-bg-dark:    #111e11;
+  /* Color de fondo oscuro (variante) */
   --color-text:       #1c1c1c;
+  /* Color de texto principal, casi negro */
   --color-text-muted: #666;
+  /* Color de texto secundario/atenuado */
   --color-whatsapp:   #25D366;
+  /* Verde característico de WhatsApp, usado en botones relacionados */
 
   --font-display: 'Syne', sans-serif;
+  /* Fuente para títulos grandes/llamativos */
   --font-body:    'DM Sans', sans-serif;
+  /* Fuente para texto de cuerpo/párrafos */
 
   --radius-sm: 6px;
+  /* Radio de borde pequeño (esquinas poco redondeadas) */
   --radius-md: 10px;
+  /* Radio de borde mediano */
   --radius-lg: 18px;
+  /* Radio de borde grande */
   --radius-xl: 28px;
+  /* Radio de borde extra grande */
 
   --shadow-card: 0 4px 20px rgba(0,0,0,0.1);
+  /* Sombra estándar reutilizada en tarjetas */
   --transition:  0.2s ease;
+  /* Duración/curva de transición estándar para animaciones hover */
 }
 
 /* ── RESET ── */
+/* Reglas de "reset" para eliminar estilos por defecto del navegador y unificar el comportamiento */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* Aplica a todos los elementos: box-sizing border-box (el padding/borde no aumenta el tamaño total), y quita márgenes/rellenos por defecto */
 html { scroll-behavior: smooth; }
+/* Hace que el desplazamiento (scroll) al hacer clic en anclas (#id) sea suave/animado */
 body {
   font-family: var(--font-body);
+  /* Usa la fuente de cuerpo definida en las variables */
   font-size: 18px;
+  /* Tamaño de fuente base de todo el sitio */
   color: var(--color-text);
+  /* Color de texto por defecto */
   background: var(--color-white);
+  /* Fondo blanco general */
   line-height: 1.65;
+  /* Espaciado entre líneas para mejorar la legibilidad */
 }
 a { text-decoration: none; color: inherit; }
+/* Quita el subrayado de los enlaces y hace que hereden el color del texto padre */
 ul { list-style: none; }
+/* Quita las viñetas por defecto de las listas */
 img { max-width: 100%; display: block; }
+/* Las imágenes nunca sobrepasan el ancho de su contenedor y se muestran como bloque (evita espacios extraños debajo) */
 button { cursor: pointer; font-family: inherit; border: none; }
+/* Los botones muestran el cursor de "mano", heredan la fuente del documento y no tienen borde por defecto */
 
 /* ── CONTAINER ── */
 .container {
   max-width: 1200px;
+  /* Ancho máximo del contenido centrado */
   margin: 0 auto;
+  /* Centra el contenedor horizontalmente */
   padding: 0 32px;
+  /* Espacio interno lateral para que el contenido no toque los bordes de la pantalla */
 }
 
 /* ── NAVBAR ── */
 .navbar {
   position: sticky;
+  /* La barra de navegación se queda "pegada" al hacer scroll */
   top: 0;
+  /* Se pega en la parte superior de la pantalla */
   z-index: 100;
+  /* Se muestra por encima de otros elementos */
   background: var(--color-green);
+  /* Fondo verde oscuro */
   display: flex;
+  /* Organiza sus hijos (logo, links, botón) en fila usando flexbox */
   align-items: center;
+  /* Centra verticalmente los elementos internos */
   justify-content: space-between;
+  /* Distribuye el espacio dejando los elementos en los extremos */
   padding: 0 56px;
+  /* Espacio interno lateral */
   height: 80px;
+  /* Alto fijo de la barra */
 }
 
 .nav-logo {
   font-family: var(--font-display);
+  /* Usa la fuente de títulos para el logo */
   font-size: 26px;
   font-weight: 700;
+  /* Grosor de letra en negrita */
   color: var(--color-yellow);
+  /* Color amarillo/dorado */
   letter-spacing: 0.06em;
+  /* Espaciado extra entre letras */
 }
 
 .nav-links {
   display: flex;
+  /* Organiza los enlaces del menú en fila */
   gap: 40px;
+  /* Espacio entre cada enlace */
 }
 
 .nav-links a {
   color: #cde8cd;
+  /* Color verde muy claro para los enlaces del menú */
   font-size: 17px;
   font-weight: 500;
   transition: color var(--transition);
+  /* Anima el cambio de color al pasar el mouse */
 }
 
 .nav-links a:hover { color: var(--color-yellow); }
+/* Al pasar el mouse sobre un enlace del menú, cambia a color amarillo */
 
 .nav-lang {
   background: var(--color-red);
+  /* Fondo rojo para destacar el selector de idioma */
   color: var(--color-white);
   font-size: 14px;
   font-weight: 500;
@@ -97,12 +154,15 @@ button { cursor: pointer; font-family: inherit; border: none; }
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: opacity var(--transition);
+  /* Anima el cambio de opacidad al pasar el mouse */
 }
 
 .nav-lang:hover { opacity: 0.85; }
+/* Al pasar el mouse, se reduce levemente la opacidad para dar efecto de interacción */
 
 .nav-menu-btn {
   display: none;
+  /* Oculto por defecto (solo se muestra en pantallas pequeñas, ver media queries) */
   background: none;
   color: var(--color-yellow);
   font-size: 28px;
@@ -112,29 +172,42 @@ button { cursor: pointer; font-family: inherit; border: none; }
 /* ── HERO ── */
 .hero {
   position: relative;
+  /* Necesario para posicionar elementos hijos de forma absoluta dentro de esta sección */
   background: linear-gradient(135deg, var(--color-green) 0%, var(--color-green-mid) 55%, var(--color-green-light) 100%);
+  /* Fondo con degradado diagonal de tres tonos de verde */
   padding: 100px 56px 88px;
+  /* Espacio interno: más arriba, lateral y menos abajo */
   overflow: hidden;
+  /* Oculta cualquier contenido decorativo que sobresalga de la sección (como las formas) */
   min-height: 580px;
+  /* Alto mínimo de la sección hero */
   display: flex;
+  /* Organiza el contenido en flexbox */
   align-items: center;
+  /* Centra verticalmente el contenido */
 }
 
 .hero-content {
   position: relative;
+  /* Se posiciona relativo para poder usar z-index */
   z-index: 2;
+  /* Se muestra por encima de las formas decorativas de fondo */
   max-width: 580px;
+  /* Limita el ancho del bloque de texto */
   margin-right: 340px;
+  /* Deja espacio a la derecha para el logo circular grande */
 }
 
 .hero-tag {
   display: inline-block;
+  /* Permite aplicar padding y margen como un bloque, pero fluye como texto en línea */
   background: var(--color-red);
   color: var(--color-white);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  /* Convierte el texto a mayúsculas */
   padding: 7px 16px;
   border-radius: var(--radius-sm);
   margin-bottom: 24px;
@@ -143,40 +216,54 @@ button { cursor: pointer; font-family: inherit; border: none; }
 .hero-title {
   font-family: var(--font-display);
   font-size: 64px;
+  /* Tamaño grande para el título principal */
   font-weight: 700;
   color: var(--color-white);
   line-height: 1.15;
+  /* Espaciado entre líneas ajustado para títulos grandes */
   margin-bottom: 24px;
 }
 
 .hero-title--accent { color: var(--color-yellow); }
+/* Variante de color para resaltar parte del título en amarillo */
 
 .hero-desc {
   font-size: 20px;
   color: #b8dab8;
+  /* Verde muy claro para el texto descriptivo */
   margin-bottom: 36px;
   max-width: 440px;
+  /* Limita el ancho para mejorar la legibilidad del párrafo */
 }
 
 .hero-btns {
   display: flex;
+  /* Organiza los botones en fila */
   gap: 16px;
+  /* Espacio entre botones */
   flex-wrap: wrap;
+  /* Permite que los botones pasen a la siguiente línea si no caben */
 }
 
 .hero-badge {
   position: absolute;
+  /* Se posiciona de forma absoluta respecto al .hero (que tiene position: relative) */
   right: 80px;
   top: 50%;
   transform: translateY(-50%);
+  /* Centra verticalmente el elemento respecto a su posición "top: 50%" */
   z-index: 2;
   background: rgba(245, 200, 66, 0.12);
+  /* Fondo amarillo semitransparente */
   border: 2px solid rgba(245, 200, 66, 0.5);
+  /* Borde amarillo semitransparente */
   border-radius: 50%;
+  /* Hace que el elemento sea un círculo perfecto */
   width: 150px;
   height: 150px;
   display: flex;
   flex-direction: column;
+  /* Organiza el número y el texto en columna */
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -188,6 +275,7 @@ button { cursor: pointer; font-family: inherit; border: none; }
   font-weight: 700;
   color: var(--color-yellow);
   line-height: 1;
+  /* Espaciado mínimo entre líneas para que el número se vea compacto */
 }
 
 .hero-badge__txt {
@@ -198,17 +286,21 @@ button { cursor: pointer; font-family: inherit; border: none; }
 }
 
 .hero-shapes { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+/* Contenedor de las formas decorativas: ocupa toda la sección (inset:0), va detrás del contenido (z-index:1) y no responde a clics (pointer-events:none) */
 
 .shape {
   position: absolute;
   border-radius: 50%;
+  /* Todas las formas decorativas son circulares */
 }
 
 .shape--circle {
   width: 350px;
   height: 350px;
   background: rgba(255,255,255,0.03);
+  /* Círculo blanco casi invisible, solo un leve destello */
   bottom: -100px;
+  /* Se posiciona parcialmente fuera de la sección (por eso el "overflow: hidden" del padre) */
   right: 180px;
 }
 
@@ -216,6 +308,7 @@ button { cursor: pointer; font-family: inherit; border: none; }
   width: 240px;
   height: 240px;
   border: 2px solid rgba(245,200,66,0.08);
+  /* Solo tiene borde (aro), sin relleno, para simular un anillo */
   top: -50px;
   right: 30px;
 }
@@ -226,19 +319,28 @@ button { cursor: pointer; font-family: inherit; border: none; }
   right: 60px;
   top: 50%;
   transform: translateY(-50%);
+  /* Centra verticalmente la imagen */
   width: 300px;
   height: 300px;
   border-radius: 50%;
+  /* Hace que la imagen se vea como un círculo */
   object-fit: cover;
+  /* Recorta la imagen para que llene el círculo sin deformarse */
   border: 5px solid var(--color-yellow);
+  /* Borde amarillo grueso alrededor del círculo */
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  /* Sombra pronunciada para dar efecto de profundidad */
   transition: transform var(--transition), box-shadow var(--transition);
+  /* Anima tanto el tamaño/posición como la sombra al pasar el mouse */
   z-index: 3;
+  /* Se muestra por encima de todo lo demás en el hero */
 }
 
 .hero-logo-large:hover {
   transform: translateY(-50%) scale(1.05);
+  /* Al pasar el mouse, agranda ligeramente la imagen (manteniendo el centrado vertical) */
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  /* Sombra más intensa al hacer hover */
 }
 
 /* ── BUTTONS ── */
@@ -249,6 +351,7 @@ button { cursor: pointer; font-family: inherit; border: none; }
   padding: 14px 32px;
   border-radius: var(--radius-md);
   transition: all var(--transition);
+  /* Anima cualquier propiedad que cambie (color, fondo, transform, etc.) */
   cursor: pointer;
 }
 
@@ -259,13 +362,16 @@ button { cursor: pointer; font-family: inherit; border: none; }
 
 .btn--primary:hover {
   background: #e8b830;
+  /* Un amarillo ligeramente más oscuro al pasar el mouse */
   transform: translateY(-2px);
+  /* Efecto de "levantarse" al hacer hover */
 }
 
 .btn--outline {
   background: transparent;
   color: var(--color-white);
   border: 2px solid rgba(255,255,255,0.4);
+  /* Borde blanco semitransparente (estilo "outline"/contorno) */
 }
 
 .btn--outline:hover {
@@ -275,8 +381,10 @@ button { cursor: pointer; font-family: inherit; border: none; }
 
 .btn--whatsapp {
   display: inline-flex;
+  /* Combina flexbox con comportamiento en línea */
   align-items: center;
   gap: 10px;
+  /* Espacio entre el ícono SVG y el texto */
   background: var(--color-whatsapp);
   color: var(--color-white);
   padding: 14px 26px;
@@ -288,20 +396,24 @@ button { cursor: pointer; font-family: inherit; border: none; }
 }
 
 .btn--whatsapp:hover { opacity: 0.88; }
+/* Ligera transparencia al pasar el mouse */
 
 .btn--full { width: 100%; text-align: center; }
+/* Modificador para que un botón ocupe todo el ancho disponible (usado en el formulario) */
 
 /* ── STATS BAR ── */
 .stats-bar {
   background: var(--color-yellow);
   display: flex;
   justify-content: space-around;
+  /* Distribuye los elementos con espacio igual alrededor de cada uno */
   padding: 24px 40px;
 }
 
 .stat-item {
   display: flex;
   flex-direction: column;
+  /* El número y la etiqueta se apilan verticalmente */
   align-items: center;
 }
 
@@ -321,21 +433,27 @@ button { cursor: pointer; font-family: inherit; border: none; }
 
 /* ── SECTIONS ── */
 .section { padding: 88px 0; }
+/* Espaciado vertical estándar aplicado a todas las secciones genéricas */
 
 .section--dark {
   background: var(--color-green);
+  /* Variante de sección con fondo oscuro (usada en la galería) */
 }
 
 .section--gray {
   background: var(--color-bg);
+  /* Variante de sección con fondo gris claro (usada en el mapa) */
 }
 
 .section-header {
   display: flex;
   align-items: flex-start;
+  /* Alinea los elementos en la parte superior */
   justify-content: space-between;
+  /* Separa el título del enlace "ver todos" */
   margin-bottom: 40px;
   flex-wrap: wrap;
+  /* Permite que el contenido pase a otra línea en pantallas pequeñas */
   gap: 12px;
 }
 
@@ -348,6 +466,7 @@ button { cursor: pointer; font-family: inherit; border: none; }
 }
 
 .section-title--light { color: var(--color-white); }
+/* Variante de color claro para usar sobre fondos oscuros */
 
 .section-sub {
   font-size: 19px;
@@ -355,56 +474,73 @@ button { cursor: pointer; font-family: inherit; border: none; }
 }
 
 .section-sub--light { color: #8ab88a; }
+/* Variante de color claro (verde) para subtítulos sobre fondo oscuro */
 
 .link-all {
   font-size: 17px;
   color: var(--color-red);
   font-weight: 600;
   white-space: nowrap;
+  /* Evita que el texto "Ver todos →" se divida en varias líneas */
   transition: color var(--transition);
 }
 
 .link-all:hover { color: #9b2218; }
+/* Rojo más oscuro al pasar el mouse */
 
 /* ── PLACE CARDS ── */
 .cards-grid {
   display: grid;
+  /* Usa CSS Grid para organizar las tarjetas de lugares */
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  /* Crea columnas automáticas de al menos 260px, ajustándose según el espacio disponible */
   gap: 32px;
+  /* Espacio entre tarjetas */
 }
 
 .place-card {
   border-radius: var(--radius-lg);
   overflow: hidden;
+  /* Recorta la imagen interna para que respete el borde redondeado */
   background: var(--color-white);
   border: 1px solid #e5e5e5;
   box-shadow: var(--shadow-card);
   transition: transform var(--transition), box-shadow var(--transition);
+  /* Anima el movimiento y la sombra al hacer hover */
 }
 
 .place-card:hover {
   transform: translateY(-6px);
+  /* Efecto de "levantarse" al pasar el mouse */
   box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+  /* Sombra más pronunciada al hacer hover */
 }
 
 .place-card__img {
   height: 220px;
+  /* Alto fijo para la zona de imagen de la tarjeta */
   display: flex;
   align-items: flex-end;
+  /* Alinea el contenido (la etiqueta) en la parte inferior de la imagen */
   padding: 16px;
   position: relative;
 }
 
 .place-card__img--cueva   { background: linear-gradient(180deg, #2d5a1b 0%, #1a3a1a 100%); }
+/* Degradado de respaldo con tonos verdes para tarjetas de tipo "cueva" (si no hay imagen de fondo) */
 .place-card__img--rio     { background: linear-gradient(180deg, #185fa5 0%, #0c447c 100%); }
+/* Degradado de respaldo con tonos azules para tarjetas de tipo "río" */
 .place-card__img--parque  { background: linear-gradient(180deg, #BA7517 0%, #633806 100%); }
+/* Degradado de respaldo con tonos naranjas/dorados para tarjetas de tipo "parque" */
 .place-card__img--iglesia { background: linear-gradient(180deg, #C0392B 0%, #7a1f14 100%); }
+/* Degradado de respaldo con tonos rojos para tarjetas de tipo "iglesia" */
 
 .place-card__tag {
   font-size: 12px;
   font-weight: 600;
   color: var(--color-white);
   background: rgba(0,0,0,0.45);
+  /* Fondo negro semitransparente para que el texto resalte sobre cualquier imagen */
   padding: 5px 12px;
   border-radius: 6px;
   letter-spacing: 0.05em;
@@ -412,6 +548,7 @@ button { cursor: pointer; font-family: inherit; border: none; }
 }
 
 .place-card__body { padding: 24px 24px 28px; }
+/* Espacio interno del cuerpo de texto de la tarjeta */
 
 .place-card__name {
   font-family: var(--font-display);
@@ -441,32 +578,39 @@ button { cursor: pointer; font-family: inherit; border: none; }
 /* ── GALLERY ── */
 #galeria .section-title {
   margin-bottom: 12px;
+  /* Ajuste específico de margen solo para el título dentro de la sección con id="galeria" */
 }
 
 #galeria .section-sub {
   margin-bottom: 40px;
+  /* Ajuste específico de margen para el subtítulo de la galería */
 }
 
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  /* Tres columnas de igual ancho */
   grid-auto-rows: 260px;
+  /* Alto fijo para cada fila generada automáticamente */
   gap: 20px;
 }
 
 .iglesia {
   grid-row: span 2;
+  /* Esta celda ocupa el espacio de dos filas (imagen más alta) */
 }
 
 .cueva1,
 .cueva2 {
   grid-column: span 2;
+  /* Estas celdas ocupan el espacio de dos columnas (imágenes más anchas) */
 }
 
 #galeria img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* Recorta la imagen para llenar completamente su contenedor sin deformarse */
   border-radius: var(--radius-lg);
   display: block;
 }
@@ -475,6 +619,7 @@ button { cursor: pointer; font-family: inherit; border: none; }
 .blog-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  /* Tres columnas iguales para las tarjetas de blog */
   gap: 32px;
 }
 
@@ -487,9 +632,11 @@ button { cursor: pointer; font-family: inherit; border: none; }
 }
 
 .blog-card:hover { box-shadow: var(--shadow-card); }
+/* Añade sombra al pasar el mouse sobre la tarjeta */
 
 .blog-card--featured {
   background: var(--color-green);
+  /* La tarjeta destacada tiene fondo verde oscuro en vez de blanco */
   border-color: transparent;
 }
 
@@ -508,6 +655,7 @@ button { cursor: pointer; font-family: inherit; border: none; }
 }
 
 .blog-card--featured .blog-card__date { color: #8ab88a; }
+/* En la tarjeta destacada (fondo oscuro), la fecha usa un verde claro para mantener el contraste */
 
 .blog-card__cat {
   font-size: 11px;
@@ -530,6 +678,7 @@ button { cursor: pointer; font-family: inherit; border: none; }
 }
 
 .blog-card--featured .blog-card__title { color: var(--color-white); }
+/* En la tarjeta destacada, el título se muestra en blanco para contrastar con el fondo verde */
 
 .blog-card__excerpt {
   font-size: 16px;
@@ -538,6 +687,7 @@ button { cursor: pointer; font-family: inherit; border: none; }
 }
 
 .blog-card--featured .blog-card__excerpt { color: #8ab88a; }
+/* En la tarjeta destacada, el extracto usa verde claro */
 
 .blog-card__link {
   display: inline-block;
@@ -549,7 +699,9 @@ button { cursor: pointer; font-family: inherit; border: none; }
 }
 
 .blog-card--featured .blog-card__link { color: var(--color-yellow); }
+/* En la tarjeta destacada, el enlace "Leer más" se muestra en amarillo */
 .blog-card__link:hover { opacity: 0.75; }
+/* Reduce la opacidad del enlace al pasar el mouse */
 
 /* ── MAPA ── */
 .map-placeholder {
@@ -561,6 +713,7 @@ button { cursor: pointer; font-family: inherit; border: none; }
   align-items: center;
   justify-content: center;
   border: 2px dashed #aac89a;
+  /* Borde punteado, típico de un marcador de posición ("placeholder") mientras no hay mapa real */
 }
 
 .map-placeholder__txt {
@@ -573,8 +726,10 @@ button { cursor: pointer; font-family: inherit; border: none; }
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
+  /* Dos columnas: la segunda (formulario) ligeramente más ancha que la primera (info) */
   gap: 64px;
   align-items: start;
+  /* Alinea ambas columnas desde arriba, sin estirarse para igualar alturas */
 }
 
 .contact-list { margin-top: 28px; }
@@ -590,13 +745,18 @@ button { cursor: pointer; font-family: inherit; border: none; }
   width: 14px;
   height: 14px;
   border-radius: 50%;
+  /* Ícono circular pequeño (un punto de color) */
   margin-top: 6px;
   flex-shrink: 0;
+  /* Evita que el ícono se encoja si el texto es largo */
 }
 
 .contact-list__icon--r { background: var(--color-red); }
+/* Punto rojo para el ítem de teléfono */
 .contact-list__icon--g { background: var(--color-green-mid); }
+/* Punto verde para el ítem de correo */
 .contact-list__icon--y { background: var(--color-yellow-dk); }
+/* Punto amarillo oscuro para el ítem de ubicación */
 
 .contact-list__label {
   display: block;
@@ -616,8 +776,10 @@ button { cursor: pointer; font-family: inherit; border: none; }
 
 /* ── CONTACT FORM ── */
 .contact-form { display: flex; flex-direction: column; gap: 20px; }
+/* Organiza los campos del formulario en columna, con espacio entre ellos */
 
 .form-group { display: flex; flex-direction: column; gap: 8px; }
+/* Agrupa una etiqueta (label) con su campo correspondiente */
 
 .form-label {
   font-size: 16px;
@@ -634,18 +796,24 @@ button { cursor: pointer; font-family: inherit; border: none; }
   background: var(--color-white);
   color: var(--color-text);
   transition: border-color var(--transition);
+  /* Anima el color del borde al enfocar el campo */
   outline: none;
+  /* Quita el contorno azul por defecto del navegador al enfocar */
   resize: none;
+  /* Evita que el usuario redimensione manualmente el textarea */
 }
 
 .form-input:focus { border-color: var(--color-green-mid); }
+/* Cambia el color del borde a verde cuando el campo está enfocado (activo) */
 .form-input--textarea { min-height: 140px; }
+/* Alto mínimo específico para el campo de tipo textarea (mensaje) */
 
 /* ── FOOTER ── */
 .footer {
   background: var(--color-green);
   color: var(--color-white);
   padding: 56px 0 0;
+  /* Sin relleno inferior aquí porque .footer-bottom maneja su propio padding */
 }
 
 .footer-inner {
@@ -673,6 +841,7 @@ button { cursor: pointer; font-family: inherit; border: none; }
 .footer-nav {
   display: flex;
   flex-direction: column;
+  /* Los enlaces de navegación del footer se apilan verticalmente */
   gap: 12px;
 }
 
@@ -698,6 +867,7 @@ button { cursor: pointer; font-family: inherit; border: none; }
   height: 44px;
   border-radius: var(--radius-md);
   background: rgba(255,255,255,0.08);
+  /* Fondo blanco muy sutil para los íconos circulares/cuadrados de redes sociales */
   color: var(--color-yellow);
   font-size: 16px;
   font-weight: 700;
@@ -705,9 +875,11 @@ button { cursor: pointer; font-family: inherit; border: none; }
 }
 
 .social-icon:hover { background: rgba(255,255,255,0.15); }
+/* El fondo se aclara un poco más al pasar el mouse */
 
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,0.1);
+  /* Línea divisoria sutil encima del texto de derechos de autor */
   padding: 20px 56px;
   text-align: center;
 }
@@ -718,15 +890,19 @@ button { cursor: pointer; font-family: inherit; border: none; }
 }
 
 /* ── WHATSAPP FAB ── */
+/* "FAB" = Floating Action Button (botón de acción flotante) */
 .whatsapp-fab {
   position: fixed;
+  /* Permanece fijo en la pantalla incluso al hacer scroll */
   bottom: 32px;
   right: 32px;
   z-index: 200;
+  /* Se muestra por encima de casi todo el contenido */
   width: 64px;
   height: 64px;
   background: var(--color-whatsapp);
   border-radius: 50%;
+  /* Botón circular */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -737,26 +913,31 @@ button { cursor: pointer; font-family: inherit; border: none; }
 
 .whatsapp-fab:hover {
   transform: scale(1.1);
+  /* Agranda el botón al pasar el mouse */
   box-shadow: 0 8px 32px rgba(37,211,102,0.7);
 }
 
 /* ========================================
    PANTALLAS EXTRA GRANDES (2000px+)
    ======================================== */
+/* Media query que ajusta (generalmente aumenta) tamaños de fuente, espaciados y dimensiones para monitores muy grandes (4K u ocho más) */
 @media (min-width: 2000px) {
   body {
     font-size: 24px;
+    /* Aumenta el tamaño de fuente base en pantallas muy grandes */
   }
   
   .container {
     max-width: 1600px;
     padding: 0 60px;
+    /* Amplía el contenedor y su relleno lateral */
   }
   
   /* Navbar */
   .navbar {
     padding: 0 100px;
     height: 110px;
+    /* Barra de navegación más alta y con más espacio lateral */
   }
   
   .nav-logo {
@@ -1063,57 +1244,76 @@ button { cursor: pointer; font-family: inherit; border: none; }
 }
 
 /* ── RESPONSIVE NORMAL ── */
+/* A partir de aquí, media queries que reducen tamaños para adaptarse a pantallas más pequeñas (tablets/celulares) */
 @media (max-width: 1024px) {
   .hero-logo-large {
     width: 240px;
     height: 240px;
     right: 40px;
+    /* Reduce el tamaño del logo circular en pantallas medianas */
   }
   
   .hero-content {
     margin-right: 280px;
+    /* Reduce el espacio reservado para el logo, ya que este también es más pequeño */
   }
   
   .hero-title {
     font-size: 52px;
+    /* Reduce el tamaño del título principal */
   }
 }
 
 @media (max-width: 900px) {
   .nav-links { display: none; }
+  /* Oculta el menú de enlaces horizontal en pantallas pequeñas */
   .nav-menu-btn { display: block; }
+  /* Muestra el botón de menú hamburguesa en su lugar */
 
   .hero { padding: 60px 32px; flex-direction: column; text-align: center; }
+  /* El hero pasa de fila a columna y centra el texto */
   .hero-title { font-size: 44px; }
   .hero-badge { display: none; }
+  /* Oculta la insignia circular de estadística en pantallas pequeñas */
   .hero-content { margin-right: 0; max-width: 100%; text-align: center; }
+  /* El contenido de texto ya no necesita dejar espacio para el logo (que ahora se apila debajo) */
   .hero-desc { margin-left: auto; margin-right: auto; }
+  /* Centra el párrafo descriptivo */
   .hero-btns { justify-content: center; }
+  /* Centra los botones de acción */
   
   .hero-logo-large {
     position: relative;
+    /* Deja de estar posicionado de forma absoluta y pasa a fluir normalmente en el documento */
     width: 200px;
     height: 200px;
     right: auto;
     top: auto;
     transform: none;
     margin: 30px auto 0;
+    /* Se centra horizontalmente debajo del texto */
     display: block;
   }
   
   .hero-logo-large:hover {
     transform: scale(1.05);
+    /* Al ya no estar centrado con translateY, el hover solo necesita escalar */
   }
 
   .blog-grid { grid-template-columns: 1fr; }
+  /* Las tarjetas de blog pasan a una sola columna */
   .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  /* El formulario de contacto y la info pasan a apilarse verticalmente */
   .gallery-grid { grid-template-columns: 1fr 1fr; }
+  /* La galería pasa de 3 a 2 columnas */
   .section-title { font-size: 36px; }
+  /* Reduce el tamaño de los títulos de sección */
 }
 
 @media (max-width: 768px) {
   .gallery-grid {
     grid-template-columns: 1fr;
+    /* La galería pasa a una sola columna en pantallas más pequeñas */
   }
   
   .iglesia,
@@ -1121,16 +1321,21 @@ button { cursor: pointer; font-family: inherit; border: none; }
   .cueva2 {
     grid-column: auto;
     grid-row: auto;
+    /* Se eliminan los "span" especiales para que todas las imágenes ocupen el mismo tamaño en una sola columna */
   }
 }
 
 @media (max-width: 600px) {
   .stats-bar { flex-wrap: wrap; gap: 20px; padding: 20px; }
+  /* Las estadísticas pueden pasar a varias líneas en pantallas muy pequeñas */
   .cards-grid { grid-template-columns: 1fr; }
+  /* Las tarjetas de lugares destacados pasan a una sola columna */
   .footer-inner { flex-direction: column; }
+  /* El contenido del footer se apila verticalmente */
   .section-title { font-size: 32px; }
   .hero-title { font-size: 36px; }
   body { font-size: 16px; }
+  /* Reduce el tamaño de fuente base en móviles pequeños */
   .container { padding: 0 20px; }
   .navbar { padding: 0 20px; }
   .section { padding: 60px 0; }
@@ -1143,39 +1348,49 @@ button { cursor: pointer; font-family: inherit; border: none; }
 /* Tarjetas con imágenes de fondo */
 .place-card__img {
   background-size: cover !important;
+  /* Fuerza que la imagen de fondo cubra todo el contenedor (sobrescribe cualquier otro valor) */
   background-position: center !important;
+  /* Fuerza que la imagen se centre */
   background-repeat: no-repeat !important;
+  /* Evita que la imagen se repita en mosaico */
   position: relative;
 }
 
 /* Overlay oscuro para mejor legibilidad del texto */
 .place-card__img::before {
   content: '';
+  /* Pseudo-elemento vacío usado solo para crear una capa visual (overlay) */
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  /* Estas cuatro propiedades hacen que el overlay cubra completamente el contenedor padre */
   background: rgba(0, 0, 0, 0.4);
+  /* Capa negra semitransparente que oscurece la imagen de fondo */
   z-index: 1;
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  /* Redondea solo las esquinas superiores, igual que la tarjeta */
 }
 
 /* El tag debe estar por encima del overlay */
 .place-card__tag {
   position: relative;
   z-index: 2;
+  /* Se asegura de que la etiqueta de categoría se vea por encima de la capa oscura */
 }
 
 /* Fallback para cuando no hay imagen */
 .place-card__img:not([style*="background-image"]) {
   background: linear-gradient(135deg, var(--color-green-mid), var(--color-green)) !important;
+  /* Si el elemento NO tiene un estilo en línea con "background-image", se aplica este degradado de respaldo */
 }
 
 /* Mejoras para pantallas de 2000px */
 @media (min-width: 2000px) {
   .place-card__img {
     height: 300px;
+    /* Aumenta el alto de la imagen de la tarjeta en pantallas muy grandes */
   }
   
   .place-card__tag {
@@ -1201,6 +1416,7 @@ button { cursor: pointer; font-family: inherit; border: none; }
 }
 
 /* Corrección del botón WhatsApp que estaba roto */
+/* Nota: esta segunda definición de .whatsapp-fab redefine (sobrescribe en cascada) los valores anteriores */
 .whatsapp-fab {
   position: fixed;
   bottom: 28px;
@@ -1229,27 +1445,36 @@ button { cursor: pointer; font-family: inherit; border: none; }
 
 .section-about {
   background: linear-gradient(135deg, #f9f7f3 0%, #f0ede5 100%);
+  /* Degradado suave color hueso/crema para diferenciar esta sección */
   position: relative;
+  /* Necesario para posicionar el elemento decorativo ::before de forma absoluta */
   overflow: hidden;
+  /* Recorta el círculo decorativo que sobresale del área visible */
 }
 
 .section-about::before {
   content: '';
+  /* Pseudo-elemento decorativo, sin contenido de texto */
   position: absolute;
   top: -50%;
   right: -20%;
+  /* Se posiciona parcialmente fuera de la sección para crear un efecto de "resplandor" en la esquina */
   width: 500px;
   height: 500px;
   background: radial-gradient(circle, rgba(245,200,66,0.08) 0%, rgba(245,200,66,0) 70%);
+  /* Degradado radial amarillo que se desvanece hacia afuera, simulando un halo de luz */
   border-radius: 50%;
   pointer-events: none;
+  /* No intercepta clics del usuario */
 }
 
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  /* Dos columnas de igual ancho: texto e imagen */
   gap: 60px;
   align-items: center;
+  /* Centra verticalmente ambas columnas entre sí */
 }
 
 .about-tag {
@@ -1268,7 +1493,9 @@ button { cursor: pointer; font-family: inherit; border: none; }
 .about-title-accent {
   color: var(--color-yellow-dk);
   display: block;
+  /* Fuerza que este texto ocupe su propia línea */
   font-size: 0.9em;
+  /* Un poco más pequeño que el texto que lo rodea (relativo, "em") */
 }
 
 .about-description {
@@ -1281,19 +1508,24 @@ button { cursor: pointer; font-family: inherit; border: none; }
 .about-features {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  /* Dos columnas iguales para las tarjetas de características */
   gap: 24px 30px;
+  /* Espacio: 24px entre filas, 30px entre columnas */
   margin-bottom: 0;
 }
 
 .about-feature {
   display: flex;
   align-items: flex-start;
+  /* Alinea el ícono con la parte superior del texto */
   gap: 14px;
 }
 
 .about-feature-icon {
   font-size: 32px;
+  /* Tamaño grande para que el emoji sea bien visible */
   flex-shrink: 0;
+  /* Evita que el ícono se encoja si el texto es largo */
 }
 
 .about-feature h4 {
@@ -1314,6 +1546,7 @@ button { cursor: pointer; font-family: inherit; border: none; }
   position: relative;
   border-radius: var(--radius-xl);
   overflow: hidden;
+  /* Recorta la imagen para respetar las esquinas redondeadas */
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
@@ -1323,16 +1556,19 @@ button { cursor: pointer; font-family: inherit; border: none; }
   object-fit: cover;
   display: block;
   transition: transform 0.4s ease;
+  /* Anima el zoom de la imagen al pasar el mouse */
 }
 
 .about-image:hover img {
   transform: scale(1.05);
+  /* Efecto de zoom suave sobre la imagen al hacer hover en el contenedor */
 }
 
 .about-image-badge {
   position: absolute;
   bottom: 24px;
   right: 24px;
+  /* Se posiciona en la esquina inferior derecha de la imagen */
   background: var(--color-yellow);
   color: var(--color-green);
   padding: 12px 20px;
@@ -1358,26 +1594,32 @@ button { cursor: pointer; font-family: inherit; border: none; }
 @media (max-width: 900px) {
   .about-grid {
     grid-template-columns: 1fr;
+    /* La cuadrícula pasa a una sola columna en móviles */
     gap: 40px;
   }
   
   .about-image {
     order: -1;
+    /* Hace que la imagen aparezca primero (arriba) aunque en el HTML esté después del texto */
     max-width: 500px;
     margin: 0 auto;
+    /* Centra la imagen horizontalmente */
   }
   
   .about-content {
     text-align: center;
+    /* Centra el texto en pantallas pequeñas */
   }
   
   .about-features {
     grid-template-columns: 1fr;
+    /* Las características pasan a una sola columna */
     gap: 20px;
   }
   
   .about-feature {
     flex-direction: column;
+    /* El ícono se apila arriba del texto en vez de al lado */
     align-items: center;
     text-align: center;
   }
@@ -1386,6 +1628,7 @@ button { cursor: pointer; font-family: inherit; border: none; }
     bottom: 16px;
     right: 16px;
     padding: 8px 16px;
+    /* Insignia más compacta en móviles */
   }
   
   .about-image-badge span {
@@ -1397,11 +1640,13 @@ button { cursor: pointer; font-family: inherit; border: none; }
 @media (min-width: 601px) and (max-width: 1024px) {
   .about-features {
     grid-template-columns: 1fr;
+    /* En tablets, las características se muestran en una sola columna */
     gap: 20px;
   }
   
   .about-feature {
     flex-direction: row;
+    /* Pero el ícono vuelve a estar al lado del texto (en fila) */
     text-align: left;
   }
 }
@@ -1410,6 +1655,7 @@ button { cursor: pointer; font-family: inherit; border: none; }
 @media (min-width: 2000px) {
   .about-description {
     font-size: 22px;
+    /* Aumenta el tamaño de fuente de la descripción en pantallas muy grandes */
   }
   
   .about-feature h4 {
